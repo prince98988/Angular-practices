@@ -1,0 +1,43 @@
+
+Bootstrap installation:
+
+"styles": [
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/jquery/dist/jquery.js"
+            ]
+========================================================================================================
+Routing: 
+
+export const routes: Routes =
+[
+  {path: '', component:AutosuggestOptionComponent},
+  {path: 'search', component: HomePageComponent,
+  children:[
+    {path: 'activity', component: ActivityMainComponent, pathMatch: 'full'},
+    {path: 'hotel', component: HotelMainComponent, pathMatch: 'full'},
+    {path: 'car', component: CarMainComponent, pathMatch: 'full'},
+    {path: '', redirectTo:  'activity', pathMatch: 'full'}
+
+   ]
+  },
+]
+
+constructor(private router: Router) {  }
+this.router.navigate(['/hotel/results'])
+=======================================================================================================
+imports in app.module.ts:
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+======================================================================================================
+adding path in tsconfig.ts
+
+"paths": {
+      "@SharedData/*": ["src/app/Shared/SharedData/*"],
+ }
+import { getStatusString } from '@SharedData/TodoList';
